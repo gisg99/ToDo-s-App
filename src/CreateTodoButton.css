@@ -1,0 +1,31 @@
+.buttonContainer{
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.buttonSpan{
+    font-size: 16px;
+    padding: 6px 12px;
+    background-color: #000000AA;
+    border-radius: 25px;
+    color: #FFF;
+}
+
+button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(75, 0, 161);
+    background-color: #000000;
+    color: #FFF;
+    font-size: 32px;
+}
+
+button:hover{
+    background-color: rgb(75, 0, 161);
+    border-color: #FFF;
+}

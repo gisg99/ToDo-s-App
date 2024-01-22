@@ -1,0 +1,52 @@
+h1{
+    font-size: 28px;
+    padding: 6px 12px;
+    border-radius: 25px;
+    background-color: #000000AA;
+}
+h3{
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+h2{
+    font-size: 96px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+    width: fit-content;
+    margin: -24px 0 -12px;
+    text-shadow: 4px 3px 1px rgba(76,0,161,1);
+}
+span{
+    font-size: 24px;
+    text-shadow: none;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 48px;
+}
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 32px;
+}
+.pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid rgb(75, 0, 161);
+}
+
+.pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}

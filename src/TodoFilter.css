@@ -1,0 +1,14 @@
+input{
+    text-align: center;
+    width: calc(100vw - 84px);
+    border-radius: 24px;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #000000AA;
+    border: 2px solid rgb(75, 0, 161);
+    color: #FFF;
+}
+
+input::placeholder{
+    color: #FFFFFFAA;
+}

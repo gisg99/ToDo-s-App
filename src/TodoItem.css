@@ -1,0 +1,39 @@
+li{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 16px;
+    background-color: #000000AA;
+    margin-bottom: 8px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 2px solid #00000000;
+}
+
+.icon{
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.icon-completed{
+    color: greenyellow;
+}
+
+.task-completed{
+    text-decoration: line-through;
+}
+
+li:hover{
+    border: 2px solid #FFFFFF;
+    background-color: rgb(76,0,161);
+}
+
+li span{
+    font-size: 16px;
+}
+
+p{
+    margin: 0;
+    font-size: 18px;
+    text-shadow: 2px 2px 1px rgba(76,0,161,1);
+    text-align: center;
+}
