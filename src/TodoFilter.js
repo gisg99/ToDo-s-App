@@ -1,9 +1,15 @@
+import React from 'react';
 import './TodoFilter.css';
 
-function TodoFilter(){
+function TodoFilter(props){
     return(
         <>
-            <input placeholder="Buscar un ToDo..."/>
+            <input placeholder="Buscar un ToDo..."
+                value={props.searchValue}
+                onChange={(event) => {
+                    props.setSearchValue(event.target.value);
+                }}
+            />
         </>
     );
 }
