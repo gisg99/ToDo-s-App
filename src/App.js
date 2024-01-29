@@ -26,6 +26,28 @@ function App() {
   const completedToDos = toDos.filter(toDo => toDo.completed).length;
   const totalToDos = toDos.length;
 
+
+  //2. Declaramos lo que se hará cuando se haga clic en completar un Todo, se buscará el index de el
+  //elemento del array que tenga la variable recibida, en este caso text, y con ese index se actualizará
+  //la propiedad completed
+  const completeToDo = (text) => {
+    const newToDos = [...toDos];
+    const toDoIndex = newToDos.findIndex(
+      (toDo) => toDo.text == text
+    );
+    newToDos[toDoIndex].completed = true;
+    setToDos(newToDos);
+  }
+
+  const deleteToDo = (text) => {
+    const newToDos = [...toDos];
+    const toDoIndex = newToDos.findIndex(
+      (toDo) => toDo.text == text
+    );
+    newToDos.splice(toDoIndex, 1);
+    setToDos(newToDos);
+  }
+
   return (
     <>
       <TodoCount completed={completedToDos} total={totalToDos}/>
@@ -37,8 +59,17 @@ function App() {
       <TodoList> {/*Todos los componentes que se envían dentro de
       un componente se envían como props y en el componente
       podemos recibirlos como props.children*/}
-        {  toDos.filter(toDo => toDo.text.includes(searchValue)).map(toDo => (
-          <TodoItem key={toDo.text} texto={toDo.text} completed={toDo.completed}/>
+        {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase( ))).map(toDo => (
+          <TodoItem
+            key={toDo.text}
+            texto={toDo.text}
+            completed={toDo.completed}
+            // 1. Declaramos un evento onComplete que servirá para ejecutar una serie de pasos cuando el 
+            //ToDo sea completado ***IMPORTANTE ***Encapsular la funcion dentro de una funcion flecha
+            // porque sino, no podremos enviar los parametros por parentesis
+            onComplete={() => completeToDo(toDo.text)}
+            onDelete={() => deleteToDo(toDo.text)}
+          />
         ))}
       </TodoList>
 

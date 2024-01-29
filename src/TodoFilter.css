@@ -5,10 +5,14 @@ input{
     font-size: 18px;
     padding: 10px 20px;
     background-color: #000000AA;
-    border: 2px solid rgb(75, 0, 161);
+    border: 2px solid #565656;
     color: #FFF;
 }
 
 input::placeholder{
-    color: #FFFFFFAA;
+    color: #565656;
+}
+
+input:focus{
+    outline: solid 2px rgb(75, 0, 161);
 }

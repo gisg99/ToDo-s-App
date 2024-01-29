@@ -17,6 +17,7 @@
 
 .newToDoInput{
     border-color: #222;
+    border: 2px solid #565656;
     width: auto;
 }
 
