@@ -56,9 +56,8 @@ function App() {
         setSearchValue={setSearchValue}
       />
 
-      <TodoList> {/*Todos los componentes que se envían dentro de
-      un componente se envían como props y en el componente
-      podemos recibirlos como props.children*/}
+      <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
+      nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
         {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase( ))).map(toDo => (
           <TodoItem
             key={toDo.text}

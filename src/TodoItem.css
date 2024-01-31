@@ -14,7 +14,32 @@ li{
     font-size: 24px;
 }
 
-.icon-completed{
+.Icon{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+}
+
+.Icon-check{
+    position: absolute;
+    left: 16px;
+}
+
+.Icon-delete{
+    position: absolute;
+    right: 16px;
+}
+
+.Icon-svg{
+    width: 24px;
+    height: 24px;
+}
+
+.Icon-check--active{
     color: greenyellow;
 }
 
