@@ -25,13 +25,11 @@ li{
 }
 
 .Icon-check{
-    position: absolute;
-    left: 16px;
+    margin-left: 24px;
 }
 
 .Icon-delete{
-    position: absolute;
-    right: 16px;
+    margin-right: 24px;
 }
 
 .Icon-svg{
@@ -61,4 +59,5 @@ p{
     font-size: 18px;
     text-shadow: 2px 2px 1px rgba(76,0,161,1);
     text-align: center;
+    margin-left: 24px;
 }

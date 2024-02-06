@@ -10,7 +10,7 @@ const iconTypes = {
 
 function TodoIcon(props){
     return (
-        <span className={`Icon Icon-svg icon-${props.type}`} onClick={props.onClick}>
+        <span className={`Icon Icon-svg Icon-${props.type}`} onClick={props.onClick}>
             {iconTypes[props.type](props.color)}
         </span>
     )
