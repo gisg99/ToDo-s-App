@@ -5,38 +5,48 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 
-const defaultTodos = [
-  { text: 'Agrega tu primer ToDo', completed: false },
-  { text: 'Completa tu primer ToDo', completed: false },
-  { text: 'Usar estados derivados', completed: true },
-  /*{ text: 'Cortar el Césped', completed: false },
-  { text: 'Ir al Super', completed: false },
-  { text: 'Ver el partido del Barca', completed: true },
-  { text: 'Acomodar la ropa', completed: false },
-  { text: 'Pasear al perro', completed: false },
-  { text: 'Terminar el curso de React', completed: false },
-  { text: 'Comprar cosas para el desayuno', completed: false },
-  { text: 'Actualizar cuenta bancaria', completed: false },
-  { text: 'Terminar el Fut Champions', completed: false },*/
-];
+
+// const defaultTodos = [
+//   { text: 'Agrega tu primer ToDo', completed: false },
+//   { text: 'Completa tu primer ToDo', completed: false },
+//   { text: 'Usar estados derivados', completed: true },
+// ];
+
+// localStorage.setItem('ToDos_Storage', JSON.stringify(defaultTodos));
+
+// localStorage.removeItem('ToDos_Storage');
 
 function App() {
-  const [toDos, setToDos] = React.useState(defaultTodos);
+  const localStorageTodos = localStorage.getItem('ToDos_Storage');
+
+  let parsedTodos;
+
+  if(!localStorageTodos) {
+    localStorage.setItem('ToDos_Storage', JSON.stringify([{ text: 'Agrega tu primer ToDo', completed: false }]));
+    parsedTodos = [{ text: 'Agrega tu primer ToDo', completed: false }];
+  }
+  else{
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [toDos, setToDos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState("");
   const completedToDos = toDos.filter(toDo => toDo.completed).length;
   const totalToDos = toDos.length;
 
 
-  //2. Declaramos lo que se hará cuando se haga clic en completar un Todo, se buscará el index de el
-  //elemento del array que tenga la variable recibida, en este caso text, y con ese index se actualizará
-  //la propiedad completed
+  const saveToDos = (newToDos) => {
+    setToDos(newToDos);
+    localStorage.setItem('ToDos_Storage', JSON.stringify(newToDos));
+  }
+
   const completeToDo = (text) => {
     const newToDos = [...toDos];
     const toDoIndex = newToDos.findIndex(
       (toDo) => toDo.text == text
     );
     newToDos[toDoIndex].completed = true;
-    setToDos(newToDos);
+    saveToDos(newToDos);
   }
 
   const deleteToDo = (text) => {
@@ -45,14 +55,14 @@ function App() {
       (toDo) => toDo.text == text
     );
     newToDos.splice(toDoIndex, 1);
-    setToDos(newToDos);
+    saveToDos(newToDos);
   }
 
   const addToDo = (text) => {
     const newToDos = [...toDos];
     newToDos.push(text, false);
     console.log("lll: ", text);
-    setToDos(newToDos);
+    saveToDos(newToDos);
   }
 
   return (

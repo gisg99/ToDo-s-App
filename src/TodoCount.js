@@ -11,10 +11,13 @@ function TodoCount(props){
                     </div>
                     <h1>¡Hola Gabriel!</h1>
                 </div>
-                {props.completed == props.total && 
+                {props.total == 0 &&
+                    <><h3>No tienes</h3><h2>NINGÚN</h2><h3>ToDo</h3></>
+                }
+                {(props.completed == props.total && props.total > 0) && 
                     <><h3>¡FELICIDADES! Has completado</h3><h2>TODOS </h2><h3>los ToDo's</h3></>
                 }
-                {props.completed != props.total && 
+                {props.completed != props.total &&
                     <><h3>Has completado</h3><h2>{props.completed} <span>de</span> {props.total}</h2><h3>ToDo's</h3></>
                 }
             </div>
