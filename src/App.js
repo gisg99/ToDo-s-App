@@ -48,6 +48,13 @@ function App() {
     setToDos(newToDos);
   }
 
+  const addToDo = (text) => {
+    const newToDos = [...toDos];
+    newToDos.push(text, false);
+    console.log("lll: ", text);
+    setToDos(newToDos);
+  }
+
   return (
     <>
       <TodoCount completed={completedToDos} total={totalToDos}/>
@@ -72,7 +79,7 @@ function App() {
         ))}
       </TodoList>
 
-      <CreateTodoButton />
+      <CreateTodoButton onAdd={(adds) => addToDo(adds)}/>
     </>
   );
 }

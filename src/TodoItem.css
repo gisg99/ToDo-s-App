@@ -8,12 +8,6 @@ li{
     border-radius: 25px;
     border: 2px solid #00000000;
 }
-
-.icon{
-    font-weight: 900;
-    font-size: 24px;
-}
-
 .Icon{
     cursor: pointer;
     display: flex;
