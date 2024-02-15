@@ -15,30 +15,36 @@ import { CreateTodoButton } from './CreateTodoButton';
 // localStorage.setItem('ToDos_Storage', JSON.stringify(defaultTodos));
 
 // localStorage.removeItem('ToDos_Storage');
+function useLocalStorage(itemName, initialValue){
 
-function App() {
-  const localStorageTodos = localStorage.getItem('ToDos_Storage');
+  const localStorageItem = localStorage.getItem(itemName);
 
-  let parsedTodos;
+  let parsedItem;
 
-  if(!localStorageTodos) {
-    localStorage.setItem('ToDos_Storage', JSON.stringify([{ text: 'Agrega tu primer ToDo', completed: false }]));
-    parsedTodos = [{ text: 'Agrega tu primer ToDo', completed: false }];
+  if(!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   }
   else{
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
+  }
+  
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    setItem(newItem);
+    localStorage.setItem(itemName, JSON.stringify(newItem));
   }
 
-  const [toDos, setToDos] = React.useState(parsedTodos);
+  return [item, saveItem]
+}
+
+function App() {
+
+  const [toDos, saveToDos] = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
   const [searchValue, setSearchValue] = React.useState("");
   const completedToDos = toDos.filter(toDo => toDo.completed).length;
   const totalToDos = toDos.length;
-
-
-  const saveToDos = (newToDos) => {
-    setToDos(newToDos);
-    localStorage.setItem('ToDos_Storage', JSON.stringify(newToDos));
-  }
 
   const completeToDo = (ToDoToComplete) => {
     const newToDos = [...toDos];
@@ -61,7 +67,6 @@ function App() {
   const addToDo = (ToDoToAdd) => {
     const newToDos = [...toDos];
     newToDos.push({ text: ToDoToAdd, completed: false });
-    setToDos(newToDos);
     saveToDos(newToDos);
   }
 
