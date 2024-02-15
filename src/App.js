@@ -58,11 +58,11 @@ function App() {
     saveToDos(newToDos);
   }
 
-  const addToDo = (text) => {
-    const newToDos = [...toDos];
-    newToDos.push(text, false);
-    console.log("lll: ", text);
-    saveToDos(newToDos);
+  const addToDo = (textD) => {
+    /*const newToDos = [...toDos];
+    newToDos.push({ text: textD, completed: false });
+    setToDos(newToDos);*/
+    console.log(textD);
   }
 
   return (
@@ -75,7 +75,7 @@ function App() {
 
       <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
       nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
-        {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase( ))).map(toDo => (
+        {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
           <TodoItem
             key={toDo.text}
             texto={toDo.text}
@@ -89,7 +89,7 @@ function App() {
         ))}
       </TodoList>
 
-      <CreateTodoButton onAdd={(adds) => addToDo(adds)}/>
+      <CreateTodoButton onAdd={(aaaG) => addToDo(aaaG)}/>
     </>
   );
 }
