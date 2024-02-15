@@ -40,29 +40,29 @@ function App() {
     localStorage.setItem('ToDos_Storage', JSON.stringify(newToDos));
   }
 
-  const completeToDo = (text) => {
+  const completeToDo = (ToDoToComplete) => {
     const newToDos = [...toDos];
     const toDoIndex = newToDos.findIndex(
-      (toDo) => toDo.text == text
+      (toDo) => toDo.text == ToDoToComplete
     );
     newToDos[toDoIndex].completed = true;
     saveToDos(newToDos);
   }
 
-  const deleteToDo = (text) => {
+  const deleteToDo = (ToDoToDelete) => {
     const newToDos = [...toDos];
     const toDoIndex = newToDos.findIndex(
-      (toDo) => toDo.text == text
+      (toDo) => toDo.text == ToDoToDelete
     );
     newToDos.splice(toDoIndex, 1);
     saveToDos(newToDos);
   }
 
-  const addToDo = (textD) => {
-    /*const newToDos = [...toDos];
-    newToDos.push({ text: textD, completed: false });
-    setToDos(newToDos);*/
-    console.log(textD);
+  const addToDo = (ToDoToAdd) => {
+    const newToDos = [...toDos];
+    newToDos.push({ text: ToDoToAdd, completed: false });
+    setToDos(newToDos);
+    saveToDos(newToDos);
   }
 
   return (
