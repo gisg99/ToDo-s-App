@@ -1,9 +1,9 @@
 import React from 'react';
-import { TodoCount } from './TodoCount';
-import { TodoFilter } from './TodoFilter';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
+import { TodoCount } from '../components';
+import { TodoFilter } from '../components';
+import { TodoList } from '../components';
+import { TodoItem } from '../components';
+import { CreateTodoButton } from '../components/';
 
 
 // const defaultTodos = [
@@ -66,7 +66,7 @@ function App() {
 
   const addToDo = (ToDoToAdd) => {
     const newToDos = [...toDos];
-    newToDos.push({ text: ToDoToAdd, completed: false });
+    newToDos.push({ text: ToDoToAdd, completed: false }); 
     saveToDos(newToDos);
   }
 

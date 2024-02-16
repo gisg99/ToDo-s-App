@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoItem.css';
-import { CompleteIcon } from './CompleteIcon';
-import { DeleteIcon } from './DeleteIcon';
+import { CompleteIcon } from '../../components';
+import { DeleteIcon } from '../../components';
 
 function TodoItem(props){ //Los componentes empiezan con mayuscula
     return (
