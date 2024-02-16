@@ -39,6 +39,11 @@ li{
     text-decoration: line-through;
 }
 
+.itemContainer{
+    display: flex;
+    align-items: center;
+}
+
 li:hover{
     border: 2px solid #FFFFFF;
     background-color: rgb(76,0,161);
@@ -49,9 +54,8 @@ li span{
 }
 
 p{
-    margin: 0;
+    margin: 0 30px;
     font-size: 18px;
     text-shadow: 2px 2px 1px rgba(76,0,161,1);
     text-align: center;
-    margin-left: 24px;
 }
