@@ -19,7 +19,7 @@ import { useLocalStorage } from '../utils/useLocalStorage';
 
 function App() {
 
-  const [toDos, saveToDos] = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
+  const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
   const [searchValue, setSearchValue] = React.useState("");
   const completedToDos = toDos.filter(toDo => toDo.completed).length;
   const totalToDos = toDos.length;
@@ -58,6 +58,8 @@ function App() {
 
       <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
       nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
+        {loading && <p>Cargando...</p>}
+        {error && <p>Error</p>}
         {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
           <TodoItem
             key={toDo.text}
