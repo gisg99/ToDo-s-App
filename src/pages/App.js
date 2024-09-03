@@ -5,6 +5,7 @@ import { TodoList } from '../components';
 import { TodoItem } from '../components';
 import { CreateTodoButton } from '../components/';
 import { useLocalStorage } from '../utils/useLocalStorage';
+import './App.css';
 
 
 // const defaultTodos = [
@@ -19,7 +20,8 @@ import { useLocalStorage } from '../utils/useLocalStorage';
 
 function App() {
 
-  const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
+  //const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
+  const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', []);
   const [searchValue, setSearchValue] = React.useState("");
   const completedToDos = toDos.filter(toDo => toDo.completed).length;
   const totalToDos = toDos.length;
@@ -58,7 +60,7 @@ function App() {
 
       <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
       nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
-        {loading && <p>Cargando...</p>}
+        {loading && <div className='loading-screen'><div className='spinner1'><div className='spinner2'></div></div></div>}
         {error && <p>Error</p>}
         {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
           <TodoItem
