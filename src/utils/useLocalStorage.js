@@ -6,6 +6,7 @@ function useLocalStorage(itemName, initialValue){
     const [error, setError] = React.useState(false);
   
     React.useEffect(() => {
+      setTimeout(() => {
         try {
           const localStorageItem = localStorage.getItem(itemName);
           let parsedItem;
@@ -23,6 +24,7 @@ function useLocalStorage(itemName, initialValue){
           setError(error);
           setLoading(false);
         }
+      }, 1500);
     }, []); 
   
     const saveItem = (newItem) => {

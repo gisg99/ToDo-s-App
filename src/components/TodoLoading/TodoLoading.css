@@ -1,0 +1,126 @@
+@keyframes dot-wave{
+    0%{
+        top: 0;
+        opacity: 1;
+    }
+    50%{
+        top: 30px;
+        opacity: .2;
+    }
+    100%{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes skeleton-wave{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    10%{
+        transform: translateY(15px);
+        opacity: .1;
+    }
+    20%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    40%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    
+}
+
+.loading{
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-container{
+    width: 88px;
+    margin: 100px auto;
+}
+
+.loading-dot{
+    position: relative;
+    box-sizing: border-box;
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background-color: rgba(76,0,161,1);
+}
+
+.loading-dot:nth-child(4n+1){
+    animation: dot-wave 2s 0s infinite;
+}
+
+.loading-dot:nth-child(4n+2){
+    animation: dot-wave 2s 0.2s infinite;
+}
+
+.loading-dot:nth-child(4n+3){
+    animation: dot-wave 2s 0.4s infinite;
+}
+
+.loading-dot:nth-child(4n+4){
+    animation: dot-wave 2s 0.6s infinite;
+}
+
+.todo-skeleton{
+    width: 100%;
+    height: 45px;
+    border-radius: 23px;
+    background-color: #000000AA;
+    border: 2px solid rgba(76,0,161,0.6);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: skeleton-wave 4s infinite;
+}
+
+.todo-skeleton:nth-child(1){
+    animation-delay: 0s;
+}
+
+.todo-skeleton:nth-child(2){
+    animation-delay: .5s;
+}
+
+.todo-skeleton:nth-child(3){
+    animation-delay: 1s;
+}
+
+.todo-skeleton:nth-child(4){
+    animation-delay: 1.5s;
+}
+
+.todo-skeleton:nth-child(5){
+    animation-delay: 2s;
+}
+
+.todo-skeleton:nth-child(6){
+    animation-delay: 2.5s;
+}
+
+.todo-skeleton:nth-child(7){
+    animation-delay: 3s;
+}
+
+.todo-skeleton:nth-child(8){
+    animation-delay: 3.5s;
+}
+
+.todo-skeleton:nth-child(9){
+    animation-delay: 4s;
+}

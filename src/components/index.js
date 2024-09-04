@@ -6,3 +6,5 @@ export * from "./TodoFilter";
 export * from "./TodoIcon";
 export * from "./TodoItem";
 export * from "./TodoList";
+export * from "./TodoError";
+export * from "./TodoLoading";

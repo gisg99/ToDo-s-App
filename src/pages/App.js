@@ -3,6 +3,8 @@ import { TodoCount } from '../components';
 import { TodoFilter } from '../components';
 import { TodoList } from '../components';
 import { TodoItem } from '../components';
+import { TodoError } from '../components';
+import { TodoLoading } from '../components';
 import { CreateTodoButton } from '../components/';
 import { useLocalStorage } from '../utils/useLocalStorage';
 import './App.css';
@@ -52,16 +54,15 @@ function App() {
 
   return (
     <>
-      <TodoCount completed={completedToDos} total={totalToDos}/>
+      <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
+      nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
+        {loading && <TodoLoading/>}
+        {error && <TodoError/>}
+        {!loading && !error && <><TodoCount completed={completedToDos} total={totalToDos}/>
       <TodoFilter 
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-      />
-
-      <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
-      nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
-        {loading && <div className='loading-screen'><div className='spinner1'><div className='spinner2'></div></div></div>}
-        {error && <p>Error</p>}
+      /></>}
         {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
           <TodoItem
             key={toDo.text}
