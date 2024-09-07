@@ -24,7 +24,7 @@ function useLocalStorage(itemName, initialValue){
           setError(error);
           setLoading(false);
         }
-      }, 1500);
+      }, 5500);
     }, []); 
   
     const saveItem = (newItem) => {
