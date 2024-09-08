@@ -7,7 +7,6 @@ input{
     background-color: #000000AA;
     border: 2px solid rgb(75, 0, 161);
     color: #FFF;
-    margin-bottom: 16px;
 }
 
 input::placeholder{

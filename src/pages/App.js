@@ -27,12 +27,12 @@ function App() {
           addToDo
         }) => (
           <>
+            {loading && <TodoLoading/>}
+            {error && <TodoError/>}
+            {!loading && !error && <><TodoCount/>
+              <TodoFilter/></>}
             <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
               nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
-              {loading && <TodoLoading/>}
-              {error && <TodoError/>}
-              {!loading && !error && <><TodoCount/>
-                <TodoFilter/></>}
               {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
                 <TodoItem
                   key={toDo.text}
