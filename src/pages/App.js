@@ -6,79 +6,51 @@ import { TodoItem } from '../components';
 import { TodoError } from '../components';
 import { TodoLoading } from '../components';
 import { CreateTodoButton } from '../components/';
-import { useLocalStorage } from '../utils/useLocalStorage';
 import './App.css';
-
-
-// const defaultTodos = [
-//   { text: 'Agrega tu primer ToDo', completed: false },
-//   { text: 'Completa tu primer ToDo', completed: false },
-//   { text: 'Usar estados derivados', completed: true },
-// ];
-
-// localStorage.setItem('ToDos_Storage', JSON.stringify(defaultTodos));
-
-// localStorage.removeItem('ToDos_Storage');
+import { TodoContext, TodoProvider } from '../utils/TodoContext';
 
 function App() {
 
-  //const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
-  const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', []);
-  const [searchValue, setSearchValue] = React.useState("");
-  const completedToDos = toDos.filter(toDo => toDo.completed).length;
-  const totalToDos = toDos.length;
-
-  const completeToDo = (ToDoToComplete) => {
-    const newToDos = [...toDos];
-    const toDoIndex = newToDos.findIndex(
-      (toDo) => toDo.text == ToDoToComplete
-    );
-    newToDos[toDoIndex].completed = true;
-    saveToDos(newToDos);
-  }
-
-  const deleteToDo = (ToDoToDelete) => {
-    const newToDos = [...toDos];
-    const toDoIndex = newToDos.findIndex(
-      (toDo) => toDo.text == ToDoToDelete
-    );
-    newToDos.splice(toDoIndex, 1);
-    saveToDos(newToDos);
-  }
-
-  const addToDo = (ToDoToAdd) => {
-    const newToDos = [...toDos];
-    newToDos.push({ text: ToDoToAdd, completed: false }); 
-    saveToDos(newToDos);
-  }
-
+  //A la hora de llamar al Provider, necesitamos declararlo como TodoProvider, y dentro de el definir un
+  //Consumer el cual nos ayudará a obtener todos los datos que sean necesarios desde el propio Provider context
+  //Esta es una de las 2 formas de consumir la información de los Providers
   return (
-    <>
-      <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
-      nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
-        {loading && <TodoLoading/>}
-        {error && <TodoError/>}
-        {!loading && !error && <><TodoCount completed={completedToDos} total={totalToDos}/>
-      <TodoFilter 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      /></>}
-        {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
-          <TodoItem
-            key={toDo.text}
-            texto={toDo.text}
-            completed={toDo.completed}
-            // 1. Declaramos un evento onComplete que servirá para ejecutar una serie de pasos cuando el 
-            //ToDo sea completado ***IMPORTANTE ***Encapsular la funcion dentro de una funcion flecha
-            // porque sino, no podremos enviar los parametros por parentesis
-            onComplete={() => completeToDo(toDo.text)}
-            onDelete={() => deleteToDo(toDo.text)}
-          />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton onAdd={(aaaG) => addToDo(aaaG)}/>
-    </>
+    <TodoProvider>
+      <TodoContext.Consumer>
+        {({
+          toDos,
+          loading,
+          error,
+          searchValue,
+          completeToDo,
+          deleteToDo,
+          addToDo
+        }) => (
+          <>
+            <TodoList> {/*Instalaremos el paquete React icons para poder utilizar iconos en
+              nuestro proyecto, mediante el comando 'npm install react-icons --save' */}
+              {loading && <TodoLoading/>}
+              {error && <TodoError/>}
+              {!loading && !error && <><TodoCount/>
+                <TodoFilter/></>}
+              {  toDos.filter(toDo => toDo.text.toLowerCase().includes(searchValue.toLowerCase())).map(toDo => (
+                <TodoItem
+                  key={toDo.text}
+                  texto={toDo.text}
+                  completed={toDo.completed}
+                  // 1. Declaramos un evento onComplete que servirá para ejecutar una serie de pasos cuando el 
+                  //ToDo sea completado ***IMPORTANTE ***Encapsular la funcion dentro de una funcion flecha
+                  // porque sino, no podremos enviar los parametros por parentesis
+                  onComplete={() => completeToDo(toDo.text)}
+                  onDelete={() => deleteToDo(toDo.text)}
+                />
+              ))}
+            </TodoList>
+            <CreateTodoButton onAdd={(aaaG) => addToDo(aaaG)}/>
+          </>
+        )}
+      </TodoContext.Consumer>
+    </TodoProvider>
   );
 }
 
