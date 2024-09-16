@@ -34,7 +34,7 @@ span{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 32px;
 }
 .pic{

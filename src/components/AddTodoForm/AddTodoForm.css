@@ -1,0 +1,14 @@
+
+
+#newToDoInput{
+    border: 2px solid rgb(75, 0, 161);
+    width: auto;
+}
+
+#newToDoInput:placeholder-shown{
+    border-color: #565656;
+}
+
+#newToDoInput::placeholder{
+    color: #565656;
+}

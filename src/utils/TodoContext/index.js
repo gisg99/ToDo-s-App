@@ -9,14 +9,13 @@ function TodoProvider({ children }) { //Creamos un provider para guardar todos l
     //const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', [{ text: 'Agrega tu primer ToDo', completed: false }]);
     const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage('ToDos_Storage', []);
     const [searchValue, setSearchValue] = React.useState("");
+    const [modalOpened, setModalOpened] = React.useState(false);
     const completedToDos = toDos.filter(toDo => toDo.completed).length;
     const totalToDos = toDos.length;
 
     const completeToDo = (ToDoToComplete) => {
         const newToDos = [...toDos];
-        const toDoIndex = newToDos.findIndex(
-        (toDo) => toDo.text == ToDoToComplete
-        );
+        const toDoIndex = newToDos.findIndex((toDo) => toDo.text == ToDoToComplete);
         newToDos[toDoIndex].completed = true;
         saveToDos(newToDos);
     }
@@ -46,11 +45,12 @@ function TodoProvider({ children }) { //Creamos un provider para guardar todos l
             totalToDos,
             searchValue,
             setSearchValue,
-            totalToDos,
             //searchedTodos,
             completeToDo,
             deleteToDo,
-            addToDo
+            addToDo,
+            modalOpened,
+            setModalOpened,
         }}>
             {children}
         </TodoContext.Provider>

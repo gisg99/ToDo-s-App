@@ -8,3 +8,5 @@ export * from "./TodoItem";
 export * from "./TodoList";
 export * from "./TodoError";
 export * from "./TodoLoading";
+export * from "./AddTodoForm";
+export * from "./Modal";

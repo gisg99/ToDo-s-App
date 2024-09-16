@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    z-index: 11;
 }
 
 .buttonSpan{
@@ -13,32 +14,4 @@
     background-color: #000000AA;
     border-radius: 25px;
     color: #FFF;
-}
-
-.newToDoInput{
-    border: 2px solid rgb(75, 0, 161);
-    width: auto;
-}
-
-.newToDoInput:placeholder-shown{
-    border-color: #565656;
-}
-
-.newToDoInput::placeholder{
-    color: #565656;
-}
-
-button{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 2px solid rgb(75, 0, 161);
-    background-color: #000000;
-    color: #FFF;
-    font-size: 32px;
-}
-
-button:hover{
-    background-color: rgb(75, 0, 161);
-    border-color: #FFF;
 }
